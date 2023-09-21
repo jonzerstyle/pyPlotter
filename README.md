@@ -5,33 +5,15 @@ Python module that provides static and interactive plotting (interactive plottin
 # Colors are used in interactive plotting - if pulling up static plots random colors are used 
 
 # Example how to create csv file and plot to it.
-from plotter import Plot
-import ctypes
+See Interactive plot example commented out at bottom of main.
+Change interactive_plot=False.
+It will create csv main-test-X (X number that increments with new csv)
+When not interactive no need to do pli.plot(None, None, finished=True)
 
-colors = []
-colors.append([1.0,0,0])
-colors.append([0,0,0])
-colors.append([0,0,1.0])
+# To display csv file
+python plotter.py 'main-test*.csv' False
 
-plotObj = Plot([{'name': 'OvenTemp', 'x': [], 'y': [], 'color':colors[0], 'linewidth':1},
-                {'name': 'StepNumber', 'x': [], 'y': [], 'color':colors[1], 'linewidth':1},
-                {'name': 'JumpCnt', 'x': [], 'y': [], 'color':colors[2], 'linewidth':1}],
-                  interactive_plot=False, plot_title='OvenPlot')
-
-plotObj.plot('OvenTemp', (ctypes.c_short(val).value / 10.0))
-plotObj.plot('JumpCnt', self.oven_state.jumpcnt)
-plotObj.plot('StepNumber', self.oven_state.stepnum)
-
-#on app shutdown
-plotObj.stopPlot()
-
-# Example how to pull up a static plot using pysimple GUI button
-#   while inside a pysimpleGui app
-    PLOT_ANALOGS = 'main.plot_analogs'
-
-#  when creating GUI layout 
-    sg.Button('Plot Analogs', button_color=('blue'), key=self.PLOT_ANALOGS
-
+# When used in pysimple GUI it needs to be threaded
 #  thread definition
     def _plot(self, csvfile, createPng):
         #Doing this issues warning matplotlib is not launched from main thread
@@ -50,14 +32,5 @@ plotObj.stopPlot()
         t = Thread(target=self._plot, kwargs={'csvfile':latest_file, 'createPng':createPng})
         t.start()
         pass
-    def _handle_Plot_Oven(self, win, event, values):
-        self._act_on_handle_Plot_Oven('False')
-        pass
-    def registerEvents(self):
-        self._win.registerHandler(self.PLOT_ANALOGS, self._handle_Plot_Analogs)
-        pass
-        
-#   pull up plot in code without using button
-                        #Bring up a Oven Plot
-                        self._act_on_handle_Plot_Oven('True')
+
 ```
