@@ -26,7 +26,7 @@ python plotter.py 'main-test*.csv' False
         
 #  handlers
     def _act_on_handle_Plot_Oven(self, createPng):
-        self.printnlog('>>>> Plot_Oven <<<<')
+        print('>>>> Plot_Oven <<<<')
         list_of_files = glob.glob('Oven*.csv')
         latest_file = max(list_of_files, key=os.path.getctime)
         t = Thread(target=self._plot, kwargs={'csvfile':latest_file, 'createPng':createPng})
