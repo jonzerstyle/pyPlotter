@@ -1,10 +1,10 @@
+```
 # pyPlotter
 Python module that provides static and interactive plotting (interactive plotting can be leaky)
 
 # Colors are used in interactive plotting - if pulling up static plots random colors are used 
 
 # Example how to create csv file and plot to it.
-
 from plotter import Plot
 import ctypes
 
@@ -60,3 +60,4 @@ plotObj.stopPlot()
 #   pull up plot in code without using button
                         #Bring up a Oven Plot
                         self._act_on_handle_Plot_Oven('True')
+```
