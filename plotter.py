@@ -119,7 +119,7 @@ class Plot:
                     #   row[2] = snum / 10.0 
                     #csvwriter.writerow(row)
                     #print(row)
-                    if i > 1:
+                    if i:
                         found = False
                         for _ in signalList:
                             if row[0] == _['name']:  
